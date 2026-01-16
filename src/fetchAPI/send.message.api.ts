@@ -1,8 +1,13 @@
 import type { AiTypeResponse } from "../types/interfaces";
 
+const API_URL =
+  typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://eorix-chatbot-ai-backend-service-one.onrender.com";
+
 const fetchAIResponse = async (message: string): Promise<AiTypeResponse> => {
     try {
-        const res = await fetch("http://localhost:5000/chat", {
+        const res = await fetch(`${API_URL}/chat`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message })
