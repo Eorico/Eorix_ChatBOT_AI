@@ -22,7 +22,7 @@ export default function Robot({ currentAnimation }: RobotProps) {
             modelPath='/robot/ROBOT.glb'
             scale={0.5}
             rotationY={150.9}  
-            baseY={0}
+            baseY={-1}
             currentAnim={currentAnimation}
           />
         </Stage>
