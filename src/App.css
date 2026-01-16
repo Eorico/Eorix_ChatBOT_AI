@@ -1,0 +1,189 @@
+/* Root layout */
+.app-container {
+  height: 100vh;
+  display: flex;
+  background-color: #f9fafb; /* gray-50 */
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Centered orbit visualization */
+.orbit-wrapper {
+  position: absolute;
+  inset: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem; /* p-8 */
+  margin-left: 800px;
+}
+
+/* Floating bottom-right controls */
+.floating-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Help button */
+.help-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.help-btn:hover {
+  background-color: #1f2937; /* gray-800 */
+}
+
+/* Help icon */
+.help-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.help-btn-container {
+  position: relative;
+  display: inline-block;
+}
+
+.help-tooltip {
+  visibility: hidden;
+  width: 220px;
+  background-color: #1f2937;
+  color: #fff;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: -100px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 15px;
+  line-height: 1.3;
+  background-color: #1f2937;
+  border-bottom-right-radius: 1px;
+}
+
+.help-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; 
+  left: 97%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1f2937 transparent transparent transparent;
+}
+
+.help-btn-container:hover .help-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #99aaa5; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    position: static;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .orbit-wrapper {
+    position: relative;
+    inset: unset;
+    margin-left: 0;
+    height: 40vh;
+    order: 1;
+    pointer-events: none;
+  }
+
+  .floating-controls {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 20;
+  }
+
+  .help-btn {
+    width: 48px;
+    height: 48px;
+    transform: translateY(-500px);
+  }
+
+  .help-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .help-tooltip {
+    position: fixed;
+    bottom: 508px;
+    left: 42%;
+    transform: translateX(-50%);
+    width: min(90vw, 320px);
+    font-size: 14px;
+    padding: 10px 10px;
+    border-radius: 14px;
+    text-align: center;
+    z-index: 9999;
+  }
+
+  .help-tooltip::after {
+    display: none;
+  }
+
+   
+  .help-btn-container:active .help-tooltip,
+  .help-btn-container:focus-within .help-tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6px);
+  }
+
+}
