@@ -20,7 +20,7 @@ export default function Robot({ currentAnimation }: RobotProps) {
         <Stage environment={'city'} intensity={0.6} adjustCamera={false}>
           <RobotModel 
             modelPath='/robot/ROBOT.glb'
-            scale={0.5}
+            scale={1}
             rotationY={150.9}  
             baseY={-1}
             currentAnim={currentAnimation}
